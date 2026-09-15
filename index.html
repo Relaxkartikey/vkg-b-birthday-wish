@@ -24,14 +24,46 @@
   <div class="curtain-label"></div>
 </div>
 
+<audio id="bgm" loop preload="none">
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
+</audio>
+
 <nav class="dot-nav" aria-hidden="true">
-  <a href="#hero" class="dot active" data-label="Start"></a>
-  <a href="#about" class="dot" data-label="Him"></a>
-  <a href="#timeline" class="dot" data-label="Moments"></a>
-  <a href="#story" class="dot" data-label="Behind"></a>
-  <a href="#poem" class="dot" data-label="Verse"></a>
-  <a href="#us" class="dot" data-label="Us"></a>
-  <a href="#wish" class="dot" data-label="Wish"></a>
+  <a href="#hero" class="dot active chapter-nav" data-target="#hero" data-chapter="A Series About Him" data-label="Start"></a>
+  <a href="#about" class="dot chapter-nav" data-target="#about" data-chapter="Episode One&#10;The Runner" data-label="Him"></a>
+  <a href="#timeline" class="dot chapter-nav" data-target="#timeline" data-chapter="Episode Two&#10;Moments on the Way" data-label="Moments"></a>
+  <a href="#story" class="dot chapter-nav" data-target="#story" data-chapter="Behind the Scenes&#10;What Nobody Else Sees" data-label="Behind"></a>
+  <a href="#poem" class="dot chapter-nav" data-target="#poem" data-chapter="A Verse&#10;From Me" data-label="Verse"></a>
+  <a href="#us" class="dot chapter-nav" data-target="#us" data-chapter="Episode Three&#10;Us, in Short" data-label="Us"></a>
+  <a href="#wish" class="dot chapter-nav" data-target="#wish" data-chapter="Finale&#10;Happy Birthday, Gagan" data-label="Wish"></a>
+</nav>
+
+<button class="music-fab music-toggle" id="musicFab" aria-label="Play music">
+  <i data-lucide="music"></i>
+</button>
+
+<nav class="dock" aria-label="Section navigation">
+  <button class="dock-item chapter-nav active" data-target="#hero" data-chapter="A Series About Him" aria-label="Start">
+    <i data-lucide="home"></i>
+  </button>
+  <button class="dock-item chapter-nav" data-target="#about" data-chapter="Episode One&#10;The Runner" aria-label="Him">
+    <i data-lucide="footprints"></i>
+  </button>
+  <button class="dock-item chapter-nav" data-target="#timeline" data-chapter="Episode Two&#10;Moments on the Way" aria-label="Moments">
+    <i data-lucide="route"></i>
+  </button>
+  <button class="dock-item chapter-nav" data-target="#story" data-chapter="Behind the Scenes&#10;What Nobody Else Sees" aria-label="Behind the scenes">
+    <i data-lucide="sparkles"></i>
+  </button>
+  <button class="dock-item chapter-nav" data-target="#poem" data-chapter="A Verse&#10;From Me" aria-label="Verse">
+    <i data-lucide="feather"></i>
+  </button>
+  <button class="dock-item chapter-nav" data-target="#us" data-chapter="Episode Three&#10;Us, in Short" aria-label="Us">
+    <i data-lucide="heart"></i>
+  </button>
+  <button class="dock-item chapter-nav" data-target="#wish" data-chapter="Finale&#10;Happy Birthday, Gagan" aria-label="Wish">
+    <i data-lucide="gift"></i>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -69,8 +101,8 @@
       <button class="btn-icon" id="infoBtn" aria-label="Info">
         <i data-lucide="info"></i>
       </button>
-      <button class="btn-icon sound-btn" id="soundBtn" aria-label="Toggle sound">
-        <i data-lucide="volume-2"></i>
+      <button class="btn-icon sound-btn music-toggle" id="soundBtn" aria-label="Toggle sound">
+        <i data-lucide="volume-x"></i>
       </button>
     </div>
   </div>

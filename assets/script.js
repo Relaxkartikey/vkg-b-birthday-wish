@@ -13,17 +13,20 @@
   }, { threshold: 0.15 });
   revealEls.forEach(function (el) { io.observe(el); });
 
-  // Dot nav active state
+  // Section nav active state (dot-nav + dock stay in sync)
   var dots = document.querySelectorAll('.dot-nav .dot');
+  var dockItems = document.querySelectorAll('.dock-item');
   var sections = Array.prototype.map.call(dots, function (d) {
-    return document.querySelector(d.getAttribute('href'));
+    return document.querySelector(d.getAttribute('data-target'));
   });
   var navIo = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
         var idx = sections.indexOf(entry.target);
         dots.forEach(function (d) { d.classList.remove('active'); });
+        dockItems.forEach(function (d) { d.classList.remove('active'); });
         if (dots[idx]) dots[idx].classList.add('active');
+        if (dockItems[idx]) dockItems[idx].classList.add('active');
       }
     });
   }, { threshold: 0.5 });
@@ -129,6 +132,14 @@
     });
   });
 
+  var chapterNavEls = document.querySelectorAll('.chapter-nav');
+  chapterNavEls.forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      goToChapter(el.getAttribute('data-target'), el.getAttribute('data-chapter'));
+    });
+  });
+
   var celebrateBtn = document.getElementById('celebrateBtn');
   if (celebrateBtn) celebrateBtn.addEventListener('click', function () {
     triggerFromButton(celebrateBtn);
@@ -147,11 +158,53 @@
     document.getElementById('poem').scrollIntoView({ behavior: 'smooth' });
   });
 
-  var soundBtn = document.getElementById('soundBtn');
-  var muted = true;
-  if (soundBtn) soundBtn.addEventListener('click', function () {
-    muted = !muted;
-    soundBtn.querySelector('i').setAttribute('data-lucide', muted ? 'volume-2' : 'volume-x');
+  // Background music
+  var bgm = document.getElementById('bgm');
+  var musicButtons = document.querySelectorAll('.music-toggle');
+  var playing = false;
+
+  function setMusicIcon(name) {
+    musicButtons.forEach(function (btn) {
+      var icon = btn.querySelector('i');
+      if (icon) icon.setAttribute('data-lucide', name);
+      btn.classList.toggle('playing', playing);
+    });
     if (window.lucide) lucide.createIcons();
+  }
+
+  function toggleMusic() {
+    if (!bgm) return;
+    if (playing) {
+      bgm.pause();
+      playing = false;
+      setMusicIcon('music');
+      return;
+    }
+    var playPromise = bgm.play();
+    if (playPromise && playPromise.catch) {
+      playPromise.then(function () {
+        playing = true;
+        setMusicIcon('pause');
+      }).catch(function () {
+        playing = false;
+        setMusicIcon('music-2');
+      });
+    } else {
+      playing = true;
+      setMusicIcon('pause');
+    }
+  }
+
+  musicButtons.forEach(function (btn) {
+    btn.addEventListener('click', toggleMusic);
   });
+
+  if (bgm) {
+    bgm.addEventListener('error', function () {
+      musicButtons.forEach(function (btn) {
+        btn.setAttribute('disabled', 'true');
+        btn.title = 'Music unavailable';
+      });
+    });
+  }
 })();
