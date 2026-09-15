@@ -20,10 +20,10 @@ export const media = {
   candidMoment: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=1600&auto=format&fit=crop",
   filmTexture: "https://images.unsplash.com/photo-1493514789931-586cb221d7a7?q=80&w=1600&auto=format&fit=crop",
   celebrationGif: "https://media.giphy.com/media/g9582DNuQppxC/giphy.gif",
-  // Swap for a real romantic/ambient track — kept as a remote CDN URL so no
-  // binary asset needs to live in the repo.
-  ambientAudio:
-    "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3",
+  // "10,000 Hours" (Dan + Shay / Justin Bieber) — drop the licensed mp3 file
+  // into public/audio/theme.mp3 (see the README there); this path picks it
+  // up automatically once it exists.
+  ambientAudio: "/audio/theme.mp3",
 };
 
 export type Memory = {
