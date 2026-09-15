@@ -91,13 +91,12 @@ export const conversation: { speaker: "V" | "G"; text: string }[] = [
 
 /**
  * Scene 12 — Memory Montage. Drop real photos of Gagan & Vandana into
- * public/images/montage/ named 1.jpg … 5.jpg (see the README there) and
+ * public/images/montage/ named 1.jpg, 2.jpg, … (see the README there) and
  * they'll appear here automatically — no code changes needed.
  */
 export const montage: { image: string; caption: string }[] = [
   { image: "/images/montage/1.jpg", caption: "one of those days" },
   { image: "/images/montage/2.jpg", caption: "you + your impossible goals" },
   { image: "/images/montage/3.jpg", caption: "another race" },
-  { image: "/images/montage/4.jpg", caption: "another story" },
-  { image: "/images/montage/5.jpg", caption: "still you" },
+  { image: "/images/montage/4.jpg", caption: "still you" },
 ];
