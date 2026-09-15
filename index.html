@@ -42,6 +42,16 @@
   <i data-lucide="music"></i>
 </button>
 
+<div class="slide-nav">
+  <button class="slide-btn" id="prevSlide" aria-label="Previous section">
+    <i data-lucide="skip-back" fill="currentColor"></i>
+  </button>
+  <span class="slide-progress" id="slideProgress">01 / 07</span>
+  <button class="slide-btn" id="nextSlide" aria-label="Next section">
+    <i data-lucide="skip-forward" fill="currentColor"></i>
+  </button>
+</div>
+
 <nav class="dock" aria-label="Section navigation">
   <button class="dock-item chapter-nav active" data-target="#hero" data-chapter="A Series About Him" aria-label="Start">
     <i data-lucide="home"></i>
@@ -67,7 +77,7 @@
 </nav>
 
 <!-- HERO -->
-<section id="hero" class="hero">
+<section id="hero" class="hero slide active">
   <div class="hero-bg gif-frame theme-run" aria-hidden="true">
     <div class="gif-fallback"><span class="run-dot"></span></div>
     <img src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif" alt="" loading="eager" onerror="this.style.display='none'" />
@@ -133,14 +143,11 @@
     </div>
   </div>
 
-  <div class="scroll-cue reveal" aria-hidden="true">
-    <span>scroll</span>
-    <i data-lucide="chevron-down"></i>
-  </div>
+
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="about">
+<section id="about" class="about slide">
   <div class="section-inner">
     <p class="kicker reveal">EPISODE ONE</p>
     <h2 class="section-title reveal">The Runner</h2>
@@ -172,16 +179,11 @@
         <p>Strongest hands I know, and somehow still the softest with me.</p>
       </div>
     </div>
-
-    <button class="next-cta reveal" data-target="#timeline" data-chapter="Episode Two&#10;Moments on the Way">
-      <span>Continue</span>
-      <i data-lucide="chevron-right"></i>
-    </button>
   </div>
 </section>
 
 <!-- TIMELINE -->
-<section id="timeline" class="timeline-section">
+<section id="timeline" class="timeline-section slide">
   <div class="section-inner">
     <p class="kicker reveal">EPISODE TWO</p>
     <h2 class="section-title reveal">Moments on the Way</h2>
@@ -225,16 +227,11 @@
         </div>
       </div>
     </div>
-
-    <button class="next-cta reveal" data-target="#story" data-chapter="Behind the Scenes&#10;What Nobody Else Sees">
-      <span>Continue</span>
-      <i data-lucide="chevron-right"></i>
-    </button>
   </div>
 </section>
 
 <!-- STORY STRIP -->
-<section id="story" class="story-section">
+<section id="story" class="story-section slide">
   <div class="section-inner">
     <p class="kicker reveal">BEHIND THE SCENES</p>
     <h2 class="section-title reveal">What Nobody Else Sees</h2>
@@ -288,16 +285,11 @@
         </div>
       </div>
     </div>
-
-    <button class="next-cta reveal" data-target="#poem" data-chapter="A Verse&#10;From Me">
-      <span>Continue</span>
-      <i data-lucide="chevron-right"></i>
-    </button>
   </div>
 </section>
 
 <!-- POEM -->
-<section id="poem" class="poem-section">
+<section id="poem" class="poem-section slide">
   <div class="poem-bg gif-frame theme-candle" aria-hidden="true">
     <div class="gif-fallback"><span class="flame"></span></div>
     <img src="https://media.giphy.com/media/l43C31orbUdMR2N3G/giphy.gif" alt="" loading="lazy" onerror="this.style.display='none'" />
@@ -317,16 +309,11 @@
       <p class="poem-line reveal">Every race you finish, some new distance I see:</p>
       <p class="poem-line reveal">the calm you keep chasing looks a lot like me, and you, and we.</p>
     </div>
-
-    <button class="next-cta reveal" data-target="#us" data-chapter="Episode Three&#10;Us, in Short">
-      <span>Continue</span>
-      <i data-lucide="chevron-right"></i>
-    </button>
   </div>
 </section>
 
 <!-- US -->
-<section id="us" class="us-section">
+<section id="us" class="us-section slide">
   <div class="section-inner">
     <p class="kicker reveal">EPISODE THREE</p>
     <h2 class="section-title reveal">Us, in Short</h2>
@@ -348,16 +335,11 @@
       everything: half joking, fully sure. That's us — a little dramatic,
       mostly ridiculous, entirely ours.
     </blockquote>
-
-    <button class="next-cta reveal" data-target="#wish" data-chapter="Finale&#10;Happy Birthday, Gagan">
-      <span>Continue</span>
-      <i data-lucide="chevron-right"></i>
-    </button>
   </div>
 </section>
 
 <!-- WISH -->
-<section id="wish" class="wish-section">
+<section id="wish" class="wish-section slide">
   <div class="wish-gif gif-frame theme-confetti" aria-hidden="true">
     <div class="gif-fallback"><span class="confetti-fall"></span><span class="confetti-fall d2"></span><span class="confetti-fall d3"></span></div>
     <img src="https://media.giphy.com/media/g0QSc7ZR9wsJq/giphy.gif" alt="" loading="lazy" onerror="this.style.display='none'" />

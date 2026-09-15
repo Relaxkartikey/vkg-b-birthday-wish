@@ -14,29 +14,47 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
-section[id] { scroll-snap-align: start; }
+html, body {
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
 
 body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
   font-family: var(--sans);
-  overflow-x: hidden;
   padding-block: env(safe-area-inset-top, 0px) env(safe-area-inset-bottom, 0px);
-  padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px));
-}
-@media (min-width: 900px) {
-  body { padding-bottom: env(safe-area-inset-bottom, 0px); }
 }
 
 img { max-width: 100%; }
 [hidden] { display: none !important; }
 
+/* SLIDES — each section is a fixed full-screen scene; only .active is shown */
+.slide {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100dvh;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.4s ease;
+}
+.slide.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 2;
+}
+
 .section-inner {
   max-width: 1080px;
   margin: 0 auto;
-  padding: 5rem 1.5rem;
+  padding: 3.5rem 1.5rem;
 }
 
 .kicker {
@@ -244,14 +262,58 @@ img { max-width: 100%; }
   .music-fab { bottom: 1.25rem; }
 }
 
+/* SLIDE NAV — floating prev/next controls */
+.slide-nav {
+  position: fixed;
+  left: 50%;
+  bottom: calc(78px + env(safe-area-inset-bottom, 0px));
+  transform: translateX(-50%);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(18, 18, 18, 0.78);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.slide-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--ink);
+  color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s, opacity 0.2s;
+}
+.slide-btn i { width: 18px; height: 18px; }
+.slide-btn:hover { background: #d8d2c6; transform: translateY(-2px); }
+.slide-btn:disabled { opacity: 0.3; cursor: default; transform: none; background: var(--ink); }
+.slide-progress {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-dim);
+  min-width: 3.2rem;
+  text-align: center;
+}
+
+@media (min-width: 900px) {
+  .slide-nav { bottom: 1.5rem; }
+}
+
 /* HERO */
 .hero {
-  position: relative;
-  min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  overflow: hidden;
 }
 .hero-bg {
   position: absolute;
@@ -504,22 +566,6 @@ img { max-width: 100%; }
   to { top: 110%; transform: rotate(280deg); opacity: 0.7; }
 }
 
-.scroll-cue {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-  color: var(--ink-dim);
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  padding-bottom: 1.5rem;
-  animation: bob 2.4s ease-in-out infinite;
-}
-.scroll-cue i { width: 16px; height: 16px; }
-@keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
-
 /* ABOUT */
 .about {
   background: var(--bg-soft);
@@ -662,9 +708,6 @@ img { max-width: 100%; }
 
 /* POEM */
 .poem-section {
-  position: relative;
-  overflow: hidden;
-  min-height: 100svh;
   display: flex;
   align-items: center;
 }
@@ -723,11 +766,8 @@ img { max-width: 100%; }
 
 /* WISH */
 .wish-section {
-  position: relative;
-  min-height: 100svh;
   display: flex;
   align-items: center;
-  overflow: hidden;
   background: radial-gradient(ellipse at 50% 30%, #1a1210 0%, var(--bg) 70%);
 }
 .wish-gif {
@@ -768,7 +808,6 @@ img { max-width: 100%; }
 .reveal.in-view { opacity: 1; transform: translateY(0); }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
   .reveal { transition: none; opacity: 1; transform: none; }
-  .scroll-cue { animation: none; }
+  .slide { transition: none; }
 }

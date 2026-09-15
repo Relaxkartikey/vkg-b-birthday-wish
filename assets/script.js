@@ -1,46 +1,47 @@
 (function () {
   if (window.lucide) lucide.createIcons();
 
-  // Scroll reveal
-  var revealEls = document.querySelectorAll('.reveal');
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-        io.unobserve(entry.target);
-      }
+  function revealSection(section) {
+    if (!section) return;
+    section.querySelectorAll('.reveal').forEach(function (el) {
+      el.classList.add('in-view');
     });
-  }, { threshold: 0.15 });
-  revealEls.forEach(function (el) { io.observe(el); });
+  }
 
   // Section nav active state (dot-nav + dock stay in sync)
   var dots = document.querySelectorAll('.dot-nav .dot');
   var dockItems = document.querySelectorAll('.dock-item');
-  var sections = Array.prototype.map.call(dots, function (d) {
-    return document.querySelector(d.getAttribute('data-target'));
+  var slideOrder = Array.prototype.map.call(dots, function (d) {
+    return d.getAttribute('data-target');
   });
-  var navIo = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        var idx = sections.indexOf(entry.target);
-        dots.forEach(function (d) { d.classList.remove('active'); });
-        dockItems.forEach(function (d) { d.classList.remove('active'); });
-        if (dots[idx]) dots[idx].classList.add('active');
-        if (dockItems[idx]) dockItems[idx].classList.add('active');
-      }
-    });
-  }, { threshold: 0.5 });
-  sections.forEach(function (s) { if (s) navIo.observe(s); });
+  var slides = slideOrder.map(function (sel) { return document.querySelector(sel); });
+  var currentIndex = 0;
 
-  // Parallax on hero image
-  var heroBg = document.querySelector('.hero-bg');
-  window.addEventListener('scroll', function () {
-    if (!heroBg) return;
-    var y = window.scrollY;
-    if (y < window.innerHeight) {
-      heroBg.style.transform = 'scale(1.05) translateY(' + (y * 0.25) + 'px)';
-    }
-  }, { passive: true });
+  var prevBtn = document.getElementById('prevSlide');
+  var nextBtn = document.getElementById('nextSlide');
+  var progressEl = document.getElementById('slideProgress');
+
+  function pad2(n) { return n < 10 ? '0' + n : '' + n; }
+
+  function updateNavUI(index) {
+    dots.forEach(function (d) { d.classList.remove('active'); });
+    dockItems.forEach(function (d) { d.classList.remove('active'); });
+    if (dots[index]) dots[index].classList.add('active');
+    if (dockItems[index]) dockItems[index].classList.add('active');
+    if (progressEl) progressEl.textContent = pad2(index + 1) + ' / ' + pad2(slides.length);
+    if (prevBtn) prevBtn.disabled = index === 0;
+    if (nextBtn) nextBtn.disabled = index === slides.length - 1;
+  }
+
+  function activateSlide(index) {
+    slides.forEach(function (s, i) {
+      if (!s) return;
+      s.classList.toggle('active', i === index);
+    });
+    currentIndex = index;
+    updateNavUI(index);
+    revealSection(slides[index]);
+  }
 
   // Confetti
   var canvas = document.getElementById('confetti-canvas');
@@ -110,19 +111,24 @@
 
   function goToChapter(target, chapter, btn) {
     if (transitioning) return;
-    var dest = document.querySelector(target);
-    if (!dest) return;
+    var index = slideOrder.indexOf(target);
+    if (index === -1 || index === currentIndex) return;
     transitioning = true;
     if (btn) triggerFromButton(btn);
     if (curtainLabel) curtainLabel.textContent = chapter || '';
     curtain.classList.add('covering');
     setTimeout(function () {
-      dest.scrollIntoView({ behavior: 'auto' });
+      activateSlide(index);
       setTimeout(function () {
         curtain.classList.remove('covering');
         transitioning = false;
       }, 650);
     }, 600);
+  }
+
+  function goToIndex(index) {
+    if (index < 0 || index >= slides.length) return;
+    goToChapter(slideOrder[index], null);
   }
 
   var nextCtas = document.querySelectorAll('.next-cta');
@@ -140,6 +146,17 @@
     });
   });
 
+  if (prevBtn) prevBtn.addEventListener('click', function () { goToIndex(currentIndex - 1); });
+  if (nextBtn) nextBtn.addEventListener('click', function () { goToIndex(currentIndex + 1); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goToIndex(currentIndex + 1);
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') goToIndex(currentIndex - 1);
+  });
+
+  // Initial state
+  activateSlide(0);
+
   var celebrateBtn = document.getElementById('celebrateBtn');
   if (celebrateBtn) celebrateBtn.addEventListener('click', function () {
     triggerFromButton(celebrateBtn);
@@ -155,7 +172,7 @@
 
   var infoBtn = document.getElementById('infoBtn');
   if (infoBtn) infoBtn.addEventListener('click', function () {
-    document.getElementById('poem').scrollIntoView({ behavior: 'smooth' });
+    goToChapter('#poem', 'A Verse\nFrom Me');
   });
 
   // Background music
