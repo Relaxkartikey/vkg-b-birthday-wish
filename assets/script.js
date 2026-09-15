@@ -100,12 +100,36 @@
     burst(rect.left + rect.width / 2, rect.top + rect.height / 2);
   }
 
-  var playBtn = document.getElementById('playBtn');
-  var celebrateBtn = document.getElementById('celebrateBtn');
-  if (playBtn) playBtn.addEventListener('click', function () {
-    triggerFromButton(playBtn);
-    document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+  // Curtain chapter transitions
+  var curtain = document.getElementById('curtain');
+  var curtainLabel = curtain ? curtain.querySelector('.curtain-label') : null;
+  var transitioning = false;
+
+  function goToChapter(target, chapter, btn) {
+    if (transitioning) return;
+    var dest = document.querySelector(target);
+    if (!dest) return;
+    transitioning = true;
+    if (btn) triggerFromButton(btn);
+    if (curtainLabel) curtainLabel.textContent = chapter || '';
+    curtain.classList.add('covering');
+    setTimeout(function () {
+      dest.scrollIntoView({ behavior: 'auto' });
+      setTimeout(function () {
+        curtain.classList.remove('covering');
+        transitioning = false;
+      }, 650);
+    }, 600);
+  }
+
+  var nextCtas = document.querySelectorAll('.next-cta');
+  nextCtas.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      goToChapter(btn.getAttribute('data-target'), btn.getAttribute('data-chapter'), btn);
+    });
   });
+
+  var celebrateBtn = document.getElementById('celebrateBtn');
   if (celebrateBtn) celebrateBtn.addEventListener('click', function () {
     triggerFromButton(celebrateBtn);
     burst(canvas.width * 0.25, canvas.height * 0.3);

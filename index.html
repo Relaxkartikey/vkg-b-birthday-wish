@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>For Gagan</title>
-<meta name="description" content="A birthday page for Gagan Pratap Singh." />
+<title>Vandana 4 U</title>
+<meta name="description" content="Vandana 4 U — a birthday page for Gagan Pratap Singh." />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏁</text></svg>" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,6 +17,12 @@
 
 <div class="grain"></div>
 <canvas id="confetti-canvas"></canvas>
+
+<div id="curtain" aria-hidden="true">
+  <div class="curtain-panel top"></div>
+  <div class="curtain-panel bottom"></div>
+  <div class="curtain-label"></div>
+</div>
 
 <nav class="dot-nav" aria-hidden="true">
   <a href="#hero" class="dot active" data-label="Start"></a>
@@ -39,7 +45,7 @@
   <header class="topbar reveal">
     <div class="brand">
       <i data-lucide="flame"></i>
-      <span>VG&nbsp;Studios</span>
+      <span>Vandana&nbsp;4&nbsp;U</span>
     </div>
     <div class="topbar-links">
       <span>Track</span><span>Moments</span><span>Verses</span>
@@ -52,7 +58,7 @@
     <p class="hero-tagline reveal">Happy Birthday</p>
 
     <div class="hero-actions reveal">
-      <button class="btn-play" id="playBtn">
+      <button class="btn-play next-cta" id="playBtn" data-target="#about" data-chapter="Episode One&#10;The Runner">
         <i data-lucide="play" fill="currentColor"></i>
         <span>Play</span>
       </button>
@@ -134,6 +140,11 @@
         <p>Strongest hands I know, and somehow still the softest with me.</p>
       </div>
     </div>
+
+    <button class="next-cta reveal" data-target="#timeline" data-chapter="Episode Two&#10;Moments on the Way">
+      <span>Continue</span>
+      <i data-lucide="chevron-right"></i>
+    </button>
   </div>
 </section>
 
@@ -182,6 +193,11 @@
         </div>
       </div>
     </div>
+
+    <button class="next-cta reveal" data-target="#story" data-chapter="Behind the Scenes&#10;What Nobody Else Sees">
+      <span>Continue</span>
+      <i data-lucide="chevron-right"></i>
+    </button>
   </div>
 </section>
 
@@ -240,6 +256,11 @@
         </div>
       </div>
     </div>
+
+    <button class="next-cta reveal" data-target="#poem" data-chapter="A Verse&#10;From Me">
+      <span>Continue</span>
+      <i data-lucide="chevron-right"></i>
+    </button>
   </div>
 </section>
 
@@ -264,6 +285,11 @@
       <p class="poem-line reveal">Every race you finish, some new distance I see:</p>
       <p class="poem-line reveal">the calm you keep chasing looks a lot like me, and you, and we.</p>
     </div>
+
+    <button class="next-cta reveal" data-target="#us" data-chapter="Episode Three&#10;Us, in Short">
+      <span>Continue</span>
+      <i data-lucide="chevron-right"></i>
+    </button>
   </div>
 </section>
 
@@ -290,6 +316,11 @@
       everything: half joking, fully sure. That's us — a little dramatic,
       mostly ridiculous, entirely ours.
     </blockquote>
+
+    <button class="next-cta reveal" data-target="#wish" data-chapter="Finale&#10;Happy Birthday, Gagan">
+      <span>Continue</span>
+      <i data-lucide="chevron-right"></i>
+    </button>
   </div>
 </section>
 
@@ -315,6 +346,11 @@
     </button>
 
     <p class="signature reveal">— Vandana</p>
+
+    <button class="next-cta reveal" data-target="#hero" data-chapter="A Series About Him">
+      <i data-lucide="rotate-ccw"></i>
+      <span>Watch Again</span>
+    </button>
   </div>
 </section>
 
