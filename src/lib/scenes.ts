@@ -7,6 +7,7 @@ import ConversationScene from "@/components/scenes/ConversationScene";
 import FuelScene from "@/components/scenes/FuelScene";
 import PoetryScene from "@/components/scenes/PoetryScene";
 import TraitsScene from "@/components/scenes/TraitsScene";
+import LittleThingsScene from "@/components/scenes/LittleThingsScene";
 import MontageScene from "@/components/scenes/MontageScene";
 import HandleMeScene from "@/components/scenes/HandleMeScene";
 import BirthdayScene from "@/components/scenes/BirthdayScene";
@@ -43,6 +44,7 @@ export const sceneList: SceneEntry[] = [
   { id: "fuel", Component: FuelScene },
   { id: "poetry", Component: PoetryScene },
   { id: "traits", Component: TraitsScene },
+  { id: "little-things", Component: LittleThingsScene },
   { id: "montage", Component: MontageScene },
   { id: "handle-me", Component: HandleMeScene },
   { id: "birthday", Component: BirthdayScene },
