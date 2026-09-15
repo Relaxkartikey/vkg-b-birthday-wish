@@ -22,6 +22,7 @@
   <a href="#hero" class="dot active" data-label="Start"></a>
   <a href="#about" class="dot" data-label="Him"></a>
   <a href="#timeline" class="dot" data-label="Moments"></a>
+  <a href="#story" class="dot" data-label="Behind"></a>
   <a href="#poem" class="dot" data-label="Verse"></a>
   <a href="#us" class="dot" data-label="Us"></a>
   <a href="#wish" class="dot" data-label="Wish"></a>
@@ -29,7 +30,10 @@
 
 <!-- HERO -->
 <section id="hero" class="hero">
-  <img class="hero-bg" src="https://images.pexels.com/photos/2402926/pexels-photo-2402926.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" />
+  <div class="hero-bg gif-frame theme-run" aria-hidden="true">
+    <div class="gif-fallback"><span class="run-dot"></span></div>
+    <img src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif" alt="" loading="eager" onerror="this.style.display='none'" />
+  </div>
   <div class="hero-scrim"></div>
 
   <header class="topbar reveal">
@@ -68,10 +72,26 @@
   <div class="memory-row reveal">
     <p class="memory-label">MY MEMORY</p>
     <div class="memory-strip">
-      <img src="https://images.pexels.com/photos/2402777/pexels-photo-2402777.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Running track" />
-      <img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Finish line moment" />
-      <img src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Candles" />
-      <img src="https://images.pexels.com/photos/3763875/pexels-photo-3763875.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Celebration" />
+      <figure class="memory-item gif-frame theme-run">
+        <div class="gif-fallback"><span class="run-dot"></span></div>
+        <img src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="Running" loading="lazy" onerror="this.style.display='none'" />
+        <figcaption>the first race</figcaption>
+      </figure>
+      <figure class="memory-item gif-frame theme-finish">
+        <div class="gif-fallback"><span class="pulse-ring"></span></div>
+        <img src="https://media.giphy.com/media/26tPplGWjN0xLybiU/giphy.gif" alt="Finish line" loading="lazy" onerror="this.style.display='none'" />
+        <figcaption>the finish line calm</figcaption>
+      </figure>
+      <figure class="memory-item gif-frame theme-candle">
+        <div class="gif-fallback"><span class="flame"></span></div>
+        <img src="https://media.giphy.com/media/3o6Zt6ML6BklcajjsA/giphy.gif" alt="Candles" loading="lazy" onerror="this.style.display='none'" />
+        <figcaption>her chaos, his calm</figcaption>
+      </figure>
+      <figure class="memory-item gif-frame theme-confetti">
+        <div class="gif-fallback"><span class="confetti-fall"></span><span class="confetti-fall d2"></span><span class="confetti-fall d3"></span></div>
+        <img src="https://media.giphy.com/media/g9582DNuQppxC/giphy.gif" alt="Celebration" loading="lazy" onerror="this.style.display='none'" />
+        <figcaption>still celebrating him</figcaption>
+      </figure>
     </div>
   </div>
 
@@ -165,9 +185,70 @@
   </div>
 </section>
 
+<!-- STORY STRIP -->
+<section id="story" class="story-section">
+  <div class="section-inner">
+    <p class="kicker reveal">BEHIND THE SCENES</p>
+    <h2 class="section-title reveal">What Nobody Else Sees</h2>
+
+    <div class="story-strip">
+      <div class="story-beat reveal">
+        <div class="gif-frame theme-run story-media">
+          <div class="gif-fallback"><span class="run-dot"></span></div>
+          <img src="https://media.giphy.com/media/xUOxf48UZScyKPEDf6/giphy.gif" alt="Nerves before a race" loading="lazy" onerror="this.style.display='none'" />
+        </div>
+        <div class="story-text">
+          <span class="story-num">01</span>
+          <h3>The Nerves Before</h3>
+          <p>Every race starts the same way for him — quiet, focused, a little scared underneath. He never says it out loud. I just know, because his jokes get worse right before the gun goes off.</p>
+        </div>
+      </div>
+
+      <div class="story-beat reveal reverse">
+        <div class="gif-frame theme-finish story-media">
+          <div class="gif-fallback"><span class="pulse-ring"></span></div>
+          <img src="https://media.giphy.com/media/l0MYGb1LuZ3n7dRnO/giphy.gif" alt="The calm after finishing" loading="lazy" onerror="this.style.display='none'" />
+        </div>
+        <div class="story-text">
+          <span class="story-num">02</span>
+          <h3>The Calm After</h3>
+          <p>Something happens to his shoulders the second he crosses a line. All that held breath just — leaves. That's my favorite version of him. Tired, proud, finally still.</p>
+        </div>
+      </div>
+
+      <div class="story-beat reveal">
+        <div class="gif-frame theme-candle story-media">
+          <div class="gif-fallback"><span class="flame"></span></div>
+          <img src="https://media.giphy.com/media/3o6Zt6ML6BklcajjsA/giphy.gif" alt="Steadying the chaos" loading="lazy" onerror="this.style.display='none'" />
+        </div>
+        <div class="story-text">
+          <span class="story-num">03</span>
+          <h3>Steadying My Chaos</h3>
+          <p>I show up late, overthink everything, forget the plan halfway through. He just laughs, resets it, and starts again with me. Never once made me feel like too much.</p>
+        </div>
+      </div>
+
+      <div class="story-beat reveal reverse">
+        <div class="gif-frame theme-confetti story-media">
+          <div class="gif-fallback"><span class="confetti-fall"></span><span class="confetti-fall d2"></span><span class="confetti-fall d3"></span></div>
+          <img src="https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif" alt="Laughing together" loading="lazy" onerror="this.style.display='none'" />
+        </div>
+        <div class="story-text">
+          <span class="story-num">04</span>
+          <h3>Still Laughing</h3>
+          <p>Somewhere between arguing about turning 26 versus 30 and planning a life we haven't started yet, we're just two people who keep choosing to laugh about it. That's the whole story, really.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- POEM -->
 <section id="poem" class="poem-section">
-  <img class="poem-bg" src="https://images.pexels.com/photos/1687093/pexels-photo-1687093.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" />
+  <div class="poem-bg gif-frame theme-candle" aria-hidden="true">
+    <div class="gif-fallback"><span class="flame"></span></div>
+    <img src="https://media.giphy.com/media/l43C31orbUdMR2N3G/giphy.gif" alt="" loading="lazy" onerror="this.style.display='none'" />
+  </div>
   <div class="poem-scrim"></div>
   <div class="section-inner poem-inner">
     <p class="kicker reveal">A VERSE, FROM ME</p>
@@ -214,7 +295,10 @@
 
 <!-- WISH -->
 <section id="wish" class="wish-section">
-  <img class="wish-gif" src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="Celebration" loading="lazy" />
+  <div class="wish-gif gif-frame theme-confetti" aria-hidden="true">
+    <div class="gif-fallback"><span class="confetti-fall"></span><span class="confetti-fall d2"></span><span class="confetti-fall d3"></span></div>
+    <img src="https://media.giphy.com/media/g0QSc7ZR9wsJq/giphy.gif" alt="" loading="lazy" onerror="this.style.display='none'" />
+  </div>
   <div class="section-inner wish-inner">
     <p class="kicker reveal">FINALE</p>
     <h2 class="section-title reveal">Happy Birthday, Gagan</h2>
