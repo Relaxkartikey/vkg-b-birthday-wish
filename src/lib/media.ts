@@ -69,10 +69,11 @@ export const memories: Memory[] = [
   },
 ];
 
+// Speakers are Vandana herself ("V") and Gagan himself ("G") — their real
+// WhatsApp nicknames (Verzove / Mi Vida) are swapped for their names here.
 export const conversation: { speaker: "V" | "G"; text: string }[] = [
-  { speaker: "V", text: "And jab iccha hoti toh dress up i dress up a lot nahi toh baaki ke days i dress like males" },
-  { speaker: "G", text: "Hnn samjh rha hoon" },
-  { speaker: "G", text: "Control on that" },
+  { speaker: "V", text: "Mera bas chale toh mein 24 ke 24 ghante tumhara matha khati rahu" },
+  { speaker: "G", text: "Biwi bann jaaogi toh kha lena 24 ghante maatha mera" },
   { speaker: "V", text: "Aisa bologe toh sahi mein mujhse shadi karni hogi" },
   { speaker: "G", text: "Theek hai, just be with me when I will be 30" },
   { speaker: "V", text: "Oye 30 ni\n26 it is" },
@@ -80,12 +81,12 @@ export const conversation: { speaker: "V" | "G"; text: string }[] = [
   { speaker: "V", text: "30 pe i will look old photos acche ni aayenge" },
   { speaker: "G", text: "Mere yahan 30 se pehle nhi hone dete" },
   { speaker: "V", text: "Mere papa ko tumhare ghar bhej dungi\nShadi to 26 pe hi hogi" },
-  { speaker: "G", text: "ladke toh mard 30 ke baad hee bante hain" },
-  { speaker: "V", text: "Jyada kiye toh aaj hi bolti hu" },
+  { speaker: "G", text: "Ladke toh mard 30 ke baad hee bante hain" },
   { speaker: "V", text: "House husband ban jana tum" },
-  { speaker: "G", text: "arey matlab humare yahan utna well established nhin maante kisiko" },
+  { speaker: "V", text: "Aisa koi compulsion ni\n30 se niche kya aurat hote hai?" },
+  { speaker: "G", text: "Arey matlab humare yahan utna well established nhin maante kisiko" },
   { speaker: "V", text: "Accha tum bol dena na sabko meri biwi established hai meko itna jarrurat ni lagega" },
-  { speaker: "G", text: "idea accha hai" },
+  { speaker: "G", text: "Idea accha hai" },
   { speaker: "V", text: "Mein acche ideas hi deti hu" },
 ];
 

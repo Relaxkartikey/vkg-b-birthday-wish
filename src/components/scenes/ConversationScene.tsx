@@ -35,13 +35,22 @@ export default function ConversationScene() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.4 }}
-                className={`max-w-[80%] whitespace-pre-line rounded-2xl px-4 py-2.5 text-sm leading-snug ${
-                  m.speaker === "V"
-                    ? "self-start rounded-bl-sm bg-bone/10 text-bone"
-                    : "self-end rounded-br-sm bg-ember/25 text-cream"
+                className={`flex max-w-[80%] flex-col ${
+                  m.speaker === "V" ? "self-start items-start" : "self-end items-end"
                 }`}
               >
-                {m.text}
+                <span className="mb-1 px-1 text-[9px] uppercase tracking-[0.2em] text-cream/35">
+                  {m.speaker === "V" ? "Vandana" : "Gagan"}
+                </span>
+                <span
+                  className={`whitespace-pre-line rounded-2xl px-4 py-2.5 text-sm leading-snug ${
+                    m.speaker === "V"
+                      ? "rounded-bl-sm bg-bone/10 text-bone"
+                      : "rounded-br-sm bg-ember/25 text-cream"
+                  }`}
+                >
+                  {m.text}
+                </span>
               </motion.div>
             ))}
           </AnimatePresence>
