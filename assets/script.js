@@ -43,12 +43,16 @@
     revealSection(slides[index]);
   }
 
-  // Confetti
+  // Confetti — canvas and coordinates are scoped to the #app frame, not
+  // the browser window, since the app can be centered as a fixed-width
+  // column on wide screens.
+  var appEl = document.getElementById('app');
   var canvas = document.getElementById('confetti-canvas');
   var ctx = canvas.getContext('2d');
   function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    var r = appEl.getBoundingClientRect();
+    canvas.width = r.width;
+    canvas.height = r.height;
   }
   resize();
   window.addEventListener('resize', resize);
@@ -101,7 +105,8 @@
 
   function triggerFromButton(btn) {
     var rect = btn.getBoundingClientRect();
-    burst(rect.left + rect.width / 2, rect.top + rect.height / 2);
+    var appRect = appEl.getBoundingClientRect();
+    burst(rect.left - appRect.left + rect.width / 2, rect.top - appRect.top + rect.height / 2);
   }
 
   // Curtain chapter transitions

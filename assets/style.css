@@ -22,21 +22,34 @@ html, body {
 
 body {
   margin: 0;
-  background: var(--bg);
+  background: #000;
   color: var(--ink);
   font-family: var(--sans);
-  padding-block: env(safe-area-inset-top, 0px) env(safe-area-inset-bottom, 0px);
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
 }
 
 img { max-width: 100%; }
 [hidden] { display: none !important; }
 
-/* SLIDES — each section is a fixed full-screen scene; only .active is shown */
+/* APP FRAME — the whole experience lives in one mobile-proportioned
+   column; on wide screens it stays phone-shaped instead of stretching. */
+#app {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  height: 100dvh;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* SLIDES — each section fills the app frame; only .active is shown */
 .slide {
-  position: fixed;
+  position: absolute;
   inset: 0;
   width: 100%;
-  height: 100dvh;
+  height: 100%;
   overflow-y: auto;
   opacity: 0;
   visibility: hidden;
@@ -74,7 +87,7 @@ img { max-width: 100%; }
 
 /* grain texture overlay */
 .grain {
-  position: fixed;
+  position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 5;
@@ -84,7 +97,7 @@ img { max-width: 100%; }
 }
 
 #confetti-canvas {
-  position: fixed;
+  position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 60;
@@ -92,7 +105,7 @@ img { max-width: 100%; }
 
 /* CURTAIN transition */
 #curtain {
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: 100;
   pointer-events: none;
@@ -154,48 +167,13 @@ img { max-width: 100%; }
   transform: translateY(-2px);
 }
 
-/* dot nav */
-.dot-nav {
-  position: fixed;
-  right: 1.25rem;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 40;
-  display: none;
-  flex-direction: column;
-  gap: 0.9rem;
-}
-.dot-nav .dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--line);
-  position: relative;
-  transition: background 0.3s, transform 0.3s;
-}
-.dot-nav .dot.active { background: var(--red); transform: scale(1.4); }
-.dot-nav .dot::after {
-  content: attr(data-label);
-  position: absolute;
-  right: 140%;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 0.7rem;
-  letter-spacing: 0.05em;
-  color: var(--ink-dim);
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-.dot-nav .dot:hover::after { opacity: 1; }
+/* dot nav — kept in the DOM (script.js derives slide order from it) but
+   never shown; the dock is the single nav control at every screen size */
+.dot-nav { display: none; }
 
-@media (min-width: 900px) {
-  .dot-nav { display: flex; }
-}
-
-/* MOBILE DOCK */
+/* DOCK — the one navigation bar, shown at every screen size */
 .dock {
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
@@ -227,13 +205,9 @@ img { max-width: 100%; }
 .dock-item:active { transform: scale(0.9); }
 .dock-item.active { color: var(--red); background: rgba(229, 9, 20, 0.1); }
 
-@media (min-width: 900px) {
-  .dock { display: none; }
-}
-
 /* MUSIC FAB */
 .music-fab {
-  position: fixed;
+  position: absolute;
   right: 1rem;
   bottom: calc(76px + env(safe-area-inset-bottom, 0px));
   z-index: 50;
@@ -258,13 +232,9 @@ img { max-width: 100%; }
   50% { box-shadow: 0 0 0 8px rgba(229, 9, 20, 0); }
 }
 
-@media (min-width: 900px) {
-  .music-fab { bottom: 1.25rem; }
-}
-
 /* SLIDE NAV — floating prev/next controls */
 .slide-nav {
-  position: fixed;
+  position: absolute;
   left: 50%;
   bottom: calc(78px + env(safe-area-inset-bottom, 0px));
   transform: translateX(-50%);
@@ -303,10 +273,6 @@ img { max-width: 100%; }
   color: var(--ink-dim);
   min-width: 3.2rem;
   text-align: center;
-}
-
-@media (min-width: 900px) {
-  .slide-nav { bottom: 1.5rem; }
 }
 
 /* HERO */
@@ -350,8 +316,7 @@ img { max-width: 100%; }
 }
 .brand i { width: 20px; height: 20px; }
 .brand span { font-size: 0.95rem; }
-.topbar-links { display: none; gap: 1.25rem; font-size: 0.85rem; color: var(--ink-dim); }
-@media (min-width: 700px) { .topbar-links { display: flex; } }
+.topbar-links { display: none; }
 
 .hero-content {
   position: relative;
@@ -587,8 +552,6 @@ img { max-width: 100%; }
   grid-template-columns: 1fr;
   gap: 1rem;
 }
-@media (min-width: 640px) { .stat-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1000px) { .stat-grid { grid-template-columns: repeat(4, 1fr); } }
 .stat-card {
   background: rgba(255,255,255,0.03);
   border: 1px solid var(--line);
@@ -613,7 +576,6 @@ img { max-width: 100%; }
   background: linear-gradient(var(--red), var(--amber));
   opacity: 0.5;
 }
-@media (min-width: 800px) { .timeline-line { left: 50%; transform: translateX(-1px); } }
 
 .tl-item {
   position: relative;
@@ -655,15 +617,6 @@ img { max-width: 100%; }
 .tl-card h3 { margin: 0 0 0.5rem; font-family: var(--serif); font-size: 1.4rem; }
 .tl-card p { margin: 0; color: var(--ink-dim); line-height: 1.6; font-size: 0.95rem; }
 
-@media (min-width: 800px) {
-  .tl-item { padding-left: 0; width: 50%; }
-  .tl-item:nth-child(odd) { padding-right: 3rem; }
-  .tl-item:nth-child(even) { padding-left: 3rem; margin-left: 50%; }
-  .tl-item .tl-dot { left: auto; }
-  .tl-item:nth-child(odd) .tl-dot { right: -20px; left: auto; }
-  .tl-item:nth-child(even) .tl-dot { left: -20px; }
-}
-
 /* STORY STRIP */
 .story-section { background: var(--bg-soft); }
 .story-strip { display: flex; flex-direction: column; gap: 2.5rem; margin-top: 2rem; }
@@ -693,18 +646,6 @@ img { max-width: 100%; }
 }
 .story-text h3 { font-family: var(--serif); font-size: 1.5rem; margin: 0 0 0.6rem; }
 .story-text p { margin: 0; color: var(--ink-dim); line-height: 1.7; font-size: 0.95rem; }
-
-@media (min-width: 800px) {
-  .story-beat {
-    flex-direction: row;
-    align-items: center;
-    text-align: left;
-    gap: 2.5rem;
-  }
-  .story-beat.reverse { flex-direction: row-reverse; }
-  .story-media { max-width: 380px; }
-  .story-text { text-align: left; }
-}
 
 /* POEM */
 .poem-section {
@@ -742,7 +683,6 @@ img { max-width: 100%; }
   gap: 1rem;
   margin-bottom: 2.5rem;
 }
-@media (min-width: 640px) { .us-grid { grid-template-columns: 1fr 1fr; } }
 .us-card {
   border: 1px solid var(--line);
   border-radius: 10px;
