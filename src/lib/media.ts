@@ -7,10 +7,10 @@
 export const media = {
   runnerNight: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=1600&auto=format&fit=crop",
   runnerBlur: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1600&auto=format&fit=crop",
-  trackLane: "https://images.unsplash.com/photo-1516986122253-e6a3b1c9c4d1?q=80&w=1600&auto=format&fit=crop",
+  trackLane: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=1600&auto=format&fit=crop",
   runningGif: "https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif",
   raceGif: "https://media.giphy.com/media/3o7abKCOWQgqDhIaMc/giphy.gif",
-  mountainLonavla: "https://images.unsplash.com/photo-1580889240911-c8207e51e0f9?q=80&w=1600&auto=format&fit=crop",
+  mountainLonavla: "https://images.unsplash.com/photo-1519861531473-9200262188bf?q=80&w=1600&auto=format&fit=crop",
   delhiEnergy: "https://images.unsplash.com/photo-1533560904424-a0c61dc306fc?q=80&w=1600&auto=format&fit=crop",
   cityLights: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=1600&auto=format&fit=crop",
   chaosGif: "https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif",
