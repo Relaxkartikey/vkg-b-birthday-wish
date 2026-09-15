@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>For Gagan</title>
+<meta name="description" content="A birthday page for Gagan Pratap Singh." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏁</text></svg>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+<div class="grain"></div>
+<canvas id="confetti-canvas"></canvas>
+
+<nav class="dot-nav" aria-hidden="true">
+  <a href="#hero" class="dot active" data-label="Start"></a>
+  <a href="#about" class="dot" data-label="Him"></a>
+  <a href="#timeline" class="dot" data-label="Moments"></a>
+  <a href="#poem" class="dot" data-label="Verse"></a>
+  <a href="#us" class="dot" data-label="Us"></a>
+  <a href="#wish" class="dot" data-label="Wish"></a>
+</nav>
+
+<!-- HERO -->
+<section id="hero" class="hero">
+  <img class="hero-bg" src="https://images.pexels.com/photos/2402926/pexels-photo-2402926.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" />
+  <div class="hero-scrim"></div>
+
+  <header class="topbar reveal">
+    <div class="brand">
+      <i data-lucide="flame"></i>
+      <span>VG&nbsp;Studios</span>
+    </div>
+    <div class="topbar-links">
+      <span>Track</span><span>Moments</span><span>Verses</span>
+    </div>
+  </header>
+
+  <div class="hero-content">
+    <p class="eyebrow reveal">A SERIES ABOUT&nbsp;HIM</p>
+    <h1 class="hero-title reveal">GAGAN<span class="hero-title-sub">PRATAP&nbsp;SINGH</span></h1>
+    <p class="hero-tagline reveal">Happy Birthday</p>
+
+    <div class="hero-actions reveal">
+      <button class="btn-play" id="playBtn">
+        <i data-lucide="play" fill="currentColor"></i>
+        <span>Play</span>
+      </button>
+      <button class="btn-ghost" id="listBtn">
+        <i data-lucide="plus"></i>
+        <span>My List</span>
+      </button>
+      <button class="btn-icon" id="infoBtn" aria-label="Info">
+        <i data-lucide="info"></i>
+      </button>
+      <button class="btn-icon sound-btn" id="soundBtn" aria-label="Toggle sound">
+        <i data-lucide="volume-2"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="memory-row reveal">
+    <p class="memory-label">MY MEMORY</p>
+    <div class="memory-strip">
+      <img src="https://images.pexels.com/photos/2402777/pexels-photo-2402777.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Running track" />
+      <img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Finish line moment" />
+      <img src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Candles" />
+      <img src="https://images.pexels.com/photos/3763875/pexels-photo-3763875.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Celebration" />
+    </div>
+  </div>
+
+  <div class="scroll-cue reveal" aria-hidden="true">
+    <span>scroll</span>
+    <i data-lucide="chevron-down"></i>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="section-inner">
+    <p class="kicker reveal">EPISODE ONE</p>
+    <h2 class="section-title reveal">The Runner</h2>
+    <p class="about-lead reveal">
+      He runs. Not away from things — toward them. Every start line is just
+      another version of him choosing to show up, again and again, until
+      showing up becomes who he is.
+    </p>
+
+    <div class="stat-grid">
+      <div class="stat-card reveal">
+        <i data-lucide="footprints"></i>
+        <h3>Athlete</h3>
+        <p>Built on mornings no one else saw. Miles that never made it to a caption.</p>
+      </div>
+      <div class="stat-card reveal">
+        <i data-lucide="flag-triangle-right"></i>
+        <h3>Racer</h3>
+        <p>Chases start guns and finish lines the way some people chase peace.</p>
+      </div>
+      <div class="stat-card reveal">
+        <i data-lucide="wind"></i>
+        <h3>Steady</h3>
+        <p>I create the storms. He just keeps breathing through them, gently.</p>
+      </div>
+      <div class="stat-card reveal">
+        <i data-lucide="heart-handshake"></i>
+        <h3>Gentle</h3>
+        <p>Strongest hands I know, and somehow still the softest with me.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline" class="timeline-section">
+  <div class="section-inner">
+    <p class="kicker reveal">EPISODE TWO</p>
+    <h2 class="section-title reveal">Moments on the Way</h2>
+
+    <div class="timeline">
+      <div class="timeline-line" aria-hidden="true"></div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"><i data-lucide="cake"></i></div>
+        <div class="tl-card">
+          <span class="tl-date">16 September 2005</span>
+          <h3>The Day It All Started</h3>
+          <p>The world got a runner before it knew it needed one. Somewhere far from any finish line, he took his first breath — and never really stopped moving since.</p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"><i data-lucide="flag"></i></div>
+        <div class="tl-card">
+          <span class="tl-date">28 October 2023 — Mhow</span>
+          <h3>First Race</h3>
+          <p>The first time nerves and shoes met a start line together. He didn't just run it — he began something that day, quietly, without knowing it would become this whole story.</p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"><i data-lucide="map-pin"></i></div>
+        <div class="tl-card">
+          <span class="tl-date">23 February 2025 — Lonavla</span>
+          <h3>First State Outside MP</h3>
+          <p>New roads, new air, same feet that refused to slow down. His first race outside home ground — proof that his running was outgrowing the map he started on.</p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"><i data-lucide="mountain"></i></div>
+        <div class="tl-card">
+          <span class="tl-date">24 July — Delhi</span>
+          <h3>High-Rocks Race</h3>
+          <p>The field was tougher, the standard higher, the doubt louder. He ran anyway — and came out the other side with something better than a medal: proof to himself.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POEM -->
+<section id="poem" class="poem-section">
+  <img class="poem-bg" src="https://images.pexels.com/photos/1687093/pexels-photo-1687093.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" />
+  <div class="poem-scrim"></div>
+  <div class="section-inner poem-inner">
+    <p class="kicker reveal">A VERSE, FROM ME</p>
+    <h2 class="section-title reveal">Written by Vandana</h2>
+
+    <div class="poem-lines">
+      <p class="poem-line reveal">I write in storms — half-finished, loud, undone,</p>
+      <p class="poem-line reveal">you run through mine like it's just another run.</p>
+      <p class="poem-line reveal">I burn the toast, I burn the plan, the day,</p>
+      <p class="poem-line reveal">you lace your shoes and love me anyway.</p>
+      <p class="poem-line reveal">Somewhere a stopwatch is counting your stride —</p>
+      <p class="poem-line reveal">I'm not timing you, love. I'm just along for the ride.</p>
+      <p class="poem-line reveal">Every race you finish, some new distance I see:</p>
+      <p class="poem-line reveal">the calm you keep chasing looks a lot like me, and you, and we.</p>
+    </div>
+  </div>
+</section>
+
+<!-- US -->
+<section id="us" class="us-section">
+  <div class="section-inner">
+    <p class="kicker reveal">EPISODE THREE</p>
+    <h2 class="section-title reveal">Us, in Short</h2>
+
+    <div class="us-grid">
+      <div class="us-card reveal">
+        <i data-lucide="tornado"></i>
+        <p>She creates the chaos.</p>
+      </div>
+      <div class="us-card us-card-accent reveal">
+        <i data-lucide="heart"></i>
+        <p>He handles it. Gently. Every single time.</p>
+      </div>
+    </div>
+
+    <blockquote class="us-quote reveal">
+      "Fuel for me, poison for you" — his idea of a warning label.
+      A whole argument about turning 26 versus 30, settled the way we settle
+      everything: half joking, fully sure. That's us — a little dramatic,
+      mostly ridiculous, entirely ours.
+    </blockquote>
+  </div>
+</section>
+
+<!-- WISH -->
+<section id="wish" class="wish-section">
+  <img class="wish-gif" src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="Celebration" loading="lazy" />
+  <div class="section-inner wish-inner">
+    <p class="kicker reveal">FINALE</p>
+    <h2 class="section-title reveal">Happy Birthday, Gagan</h2>
+    <p class="wish-text reveal">
+      May every race still leave something in your legs for one more lap,
+      and every finish line remind you how far you've already come.
+      Keep running toward every version of yourself — I'll be at the sidelines,
+      loud and proud, every single time.
+    </p>
+
+    <button class="btn-play btn-celebrate reveal" id="celebrateBtn">
+      <i data-lucide="sparkles"></i>
+      <span>Celebrate</span>
+    </button>
+
+    <p class="signature reveal">— Vandana</p>
+  </div>
+</section>
+
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<script src="assets/script.js"></script>
+</body>
+</html>
