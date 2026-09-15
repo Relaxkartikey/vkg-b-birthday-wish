@@ -99,5 +99,5 @@ export const montage: { image: string; caption: string }[] = [
   { image: "/images/montage/1.jpg", caption: "one of those days" },
   { image: "/images/montage/2.jpg", caption: "you + your impossible goals" },
   { image: "/images/montage/3.jpg", caption: "another race" },
-  { image: "/images/montage/4.jpg", caption: "still you" },
+  { image: "/images/montage/4.jpg", caption: "" },
 ];

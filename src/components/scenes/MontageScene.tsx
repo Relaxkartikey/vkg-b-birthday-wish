@@ -30,7 +30,7 @@ export default function MontageScene() {
           const pos = layout[i % layout.length];
           return (
             <motion.figure
-              key={m.caption}
+              key={m.image}
               initial={{ opacity: 0, scale: 0.85, rotate: 0 }}
               animate={{ opacity: 1, scale: 1, rotate: pos.rotate }}
               transition={{ delay: 0.3 + i * 0.2, duration: 0.6 }}
@@ -44,9 +44,11 @@ export default function MontageScene() {
               }}
             >
               <Image src={m.image} alt={m.caption} fill className="object-cover" />
-              <figcaption className="absolute bottom-0 w-full bg-ink/70 py-1 text-center font-serif text-[10px] italic text-cream/90">
-                {m.caption}
-              </figcaption>
+              {m.caption && (
+                <figcaption className="absolute bottom-0 w-full bg-ink/70 py-1 text-center font-serif text-[10px] italic text-cream/90">
+                  {m.caption}
+                </figcaption>
+              )}
             </motion.figure>
           );
         })}
